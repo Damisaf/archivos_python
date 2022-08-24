@@ -18,7 +18,7 @@ def ej1():
     # el diccionario vacio debe llamarse "stock"
     
     # stock = ....
-
+    
     # Luego de crear el diccionario completelo
     # con el siguiente stock:
     # tornillos = 100
@@ -28,11 +28,19 @@ def ej1():
     # Los nombres tornillos, tuercas y arandelas
     # son las claves (keys) del diccionario
     # mientras que las cantidades son los valores (values)
+    
 
     # Una vez armado el diccionario imprimirlo en pantalla con print
 
+    
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    stock = {}
+    #stock  = {'tornillos': 100, 'tuercas': 150, 'arandelas': 300}
+    stock ['tornillos'] = 100
+    stock ['tuercas'] = 150
+    stock ['arandelas'] = 300
+    print ('el stock actual es: ', stock)
 
 def ej2():
     print('Ejercicio con diccionarios 2º')
@@ -40,7 +48,7 @@ def ej2():
     # como una base de datos. Comenzaremos con un diccionario de stock
     # de nuestros productos en cero:
     
-    strock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
+    stock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
 
     # Paso 1:
     # Crear un bucle utilizando while que se ejecute de forma infinita
@@ -66,7 +74,24 @@ def ej2():
     # imprimir en pantalla con print el diccionario con el stock final
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-
+    while True:
+        producto = input('Ingrese el producto a agregar [FIN] para terminar: ')
+        if producto.upper() == "FIN":
+            break
+        producto = producto.lower()
+        if producto in stock:
+            while True:
+                cantidad = input('cantidad a ingresar: ')
+                if cantidad.isdigit():
+                    agregar = int(cantidad)
+                    stock[producto] += agregar
+                    break
+                else:
+                    print('entrada invalida')
+        else:
+            print('producto inexistente')
+    print ('el stock actualizado es: ',stock)      
+        
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
