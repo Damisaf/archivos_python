@@ -14,7 +14,7 @@ import csv
 
 def ej3():
     print('Ejercicio de archivos CSV 1º')
-    archivo = 'stock.csv'
+    #archivo = 'stock.csv'
     
     # Realice un programa que abra el archivo 'stock.csv'
     # en modo lectura y cuente el stock total de tornillos
@@ -27,13 +27,19 @@ def ej3():
     # para cumplir con el enunciado del ejercicio
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-    
+    archivo = open('stock.csv','r')
+    stock = list(csv.DictReader(archivo))
+    archivo.close()
+    total_tornillos = 0
+    for st in stock:
+        total_tornillos += int(st['tornillos'])
+    print ('el total de tornillos es: ', total_tornillos)
 
 
 def ej4():
     print('Ejercicios con archivos CSV 2º')
-    archivo = 'propiedades.csv'
-
+    #archivo = 'propiedades.csv'
+    
     # Realice un programa que abra el archivo CSV "propiedades.csv"
     # en modo lectura. Recorrar dicho archivo y contar
     # la cantidad de departamentos de 2 ambientes y la cantidad
@@ -47,6 +53,24 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    with open('propiedades.csv','r') as arch_prop:
+        prop = list(csv.DictReader(arch_prop))
+        arch_prop.close()
+    
+    cant_2amb = 0
+    cant_3amb = 0
+    for pr in prop:
+        ambientes = pr['ambientes']
+        if ambientes == '2':
+            cant_2amb += 1
+        if ambientes == '3':
+            cant_3amb += 1    
+    print('cantidad de 2 ambientes: ', cant_2amb)
+    print('cantidad de 3 ambientes: ', cant_3amb)
+
+
+
 
 
 if __name__ == '__main__':
